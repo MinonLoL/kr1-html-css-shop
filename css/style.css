@@ -178,6 +178,7 @@ a:focus-visible {
 }
 
 .product-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
@@ -267,6 +268,9 @@ a:focus-visible {
 }
 
 .catalog-filters {
+  position: sticky;
+  top: var(--space-md);
+  align-self: start;
   grid-area: filters;
   padding: var(--space-md);
   border: 1px solid var(--color-border);
@@ -388,4 +392,96 @@ a:focus-visible {
   padding: var(--space-md);
   border-left: 4px solid var(--color-success);
   background-color: var(--color-success-bg);
+}
+
+/* ===============================
+   6. Страницы товара и заявки, позиционирование
+   =============================== */
+
+/* Разделитель между двумя ссылками в хлебных крошках */
+.breadcrumbs__link + .breadcrumbs__link::before {
+  content: " / ";
+  color: var(--color-muted);
+}
+
+/* Карточка товара на странице product.html */
+.product {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+.product__image {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+}
+
+.product__title {
+  margin-top: 0;
+}
+
+.product__price {
+  font-weight: 700;
+}
+
+/* Таблица характеристик */
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.product-table caption {
+  margin-bottom: var(--space-sm);
+  font-weight: 700;
+  text-align: left;
+}
+
+.product-table__cell {
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border);
+  text-align: left;
+}
+
+.product-table__cell--head {
+  background-color: var(--color-surface);
+}
+
+/* Форма на отдельной странице */
+.order-form--page {
+  max-width: 560px;
+}
+
+/* Карточка со скидкой и бейдж (absolute внутри relative-карточки) */
+.product-card--discount {
+  border-color: var(--color-danger);
+}
+
+.product-card__badge {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  padding: 4px 8px;
+  color: var(--color-white);
+  background-color: var(--color-danger);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+}
+
+/* Кнопка «Наверх»: fixed + z-index */
+.to-top {
+  position: fixed;
+  right: var(--space-lg);
+  bottom: var(--space-lg);
+  z-index: 10;
+  padding: var(--space-sm) var(--space-md);
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+}
+
+.to-top:hover {
+  color: var(--color-white);
+  background-color: var(--color-primary-dark);
 }

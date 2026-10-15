@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Карточка товара учебного интернет-магазина: описание, характеристики и цена.">
+  <title>Товар 1 — Учебный интернет-магазин</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html">ShopProject</a>
+
+      <nav class="site-nav" aria-label="Основная навигация">
+        <ul class="site-nav__list">
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html">Главная</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="catalog.html">Каталог</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link site-nav__link--active" href="product.html">Карточка товара</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="order.html">Заявка</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="contacts.html">Контакты</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html#advantages">Преимущества</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html#popular">Популярные товары</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html#contacts">Обратная связь</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a class="breadcrumbs__link" href="index.html">Главная</a>
+      <a class="breadcrumbs__link" href="catalog.html">Каталог</a>
+      <span class="breadcrumbs__current">Товар 1</span>
+    </nav>
+
+    <section class="product section">
+      <img class="product__image" src="images/product-1.jpg" alt="Товар 1">
+
+      <div class="product__info">
+        <h1 class="product__title">Товар 1</h1>
+        <p class="product__description">Подробное описание учебного товара.</p>
+        <p class="product__price">Цена: 1000 руб.</p>
+        <a class="button button--primary" href="order.html">Оставить заявку</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <table class="product-table">
+        <caption>Характеристики товара</caption>
+        <thead>
+          <tr>
+            <th class="product-table__cell product-table__cell--head">Параметр</th>
+            <th class="product-table__cell product-table__cell--head">Значение</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="product-table__cell">Категория</td>
+            <td class="product-table__cell">Учебный товар</td>
+          </tr>
+          <tr>
+            <td class="product-table__cell">Цена</td>
+            <td class="product-table__cell">1000 руб.</td>
+          </tr>
+          <tr>
+            <td class="product-table__cell">Наличие</td>
+            <td class="product-table__cell">В наличии</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Учебный проект. Все права защищены.</p>
+    <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+  </footer>
+</body>
+</html>
