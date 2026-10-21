@@ -5,13 +5,13 @@
 :root {
   /* Цвета */
   --color-bg: #ffffff;
-  --color-text: #222222;
-  --color-muted: #666666;
-  --color-primary: #0057b8;
-  --color-primary-dark: #003f86;
-  --color-border: #dddddd;
-  --color-surface: #f7f7f7;
-  --color-surface-accent: #eef5ff;
+  --color-text: #2b2118;
+  --color-muted: #6b5d52;
+  --color-primary: #c2410c;
+  --color-primary-dark: #9a3412;
+  --color-border: #fed7aa;
+  --color-surface: #fff7ed;
+  --color-surface-accent: #ffedd5;
   --color-danger: #b00020;
   --color-success: #168a2f;
   --color-success-bg: #eefaf0;
@@ -31,6 +31,13 @@
 
   /* Размеры */
   --container-width: 1100px;
+
+
+  /* Оформление */
+  --font-heading: Georgia, "Times New Roman", serif;
+  --shadow-card: 0 2px 8px rgba(43, 33, 24, 0.08);
+  --shadow-card-hover: 0 6px 16px rgba(43, 33, 24, 0.15);
+  --transition: 0.2s ease;
 }
 
 /* ===============================
@@ -39,6 +46,12 @@
 
 * {
   box-sizing: border-box;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
 }
 
 body {
@@ -157,7 +170,8 @@ a:focus-visible {
   max-width: var(--container-width);
   margin: 0 auto var(--space-xl);
   padding: var(--space-xl) var(--space-lg);
-  background-color: var(--color-surface-accent);
+  background: linear-gradient(135deg, var(--color-surface-accent), var(--color-surface));
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
 }
 
@@ -186,10 +200,15 @@ a:focus-visible {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   background-color: var(--color-bg);
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition), box-shadow var(--transition),
+    border-color var(--transition);
 }
 
 .product-card:hover {
   border-color: var(--color-primary);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
 }
 
 .product-card__title {
@@ -210,6 +229,7 @@ a:focus-visible {
   font: inherit;
   text-decoration: none;
   cursor: pointer;
+  transition: background-color var(--transition), color var(--transition);
 }
 
 .button--primary {
