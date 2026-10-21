@@ -574,3 +574,18 @@ a:focus-visible {
   margin-top: auto;
   color: var(--color-primary);
 }
+
+/* Таблица сравнения */
+.product-table--compare {
+  max-width: var(--container-width);
+  margin: 0 auto;
+}
+
+.product-table__row:nth-child(even) {
+  background-color: var(--color-surface);
+}
+
+.product-table__cell--accent {
+  background-color: var(--color-surface-accent);
+  font-weight: 700;
+}
