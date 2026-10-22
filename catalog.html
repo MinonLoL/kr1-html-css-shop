@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Каталог товаров учебного интернет-магазина.">
+  <meta name="description" content="Каталог товаров учебного интернет-магазина: фильтрация, сортировка и подробные карточки.">
   <title>Каталог товаров — Учебный интернет-магазин</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -52,32 +52,30 @@
     <section class="section">
       <h1>Каталог товаров</h1>
       <p>
-        На этой странице представлен учебный каталог товаров.
-        В дальнейшем здесь будут добавлены фильтры, сортировка и более
-        подробные карточки.
+        Выберите товары по категории, цене и наличию. Фильтры остаются на экране при прокрутке списка.
       </p>
     </section>
 
     <section class="catalog-layout">
-      <aside class="catalog-filters">
-        <h2 class="catalog-filters__title">Фильтры</h2>
+      <aside class="catalog-filters" aria-labelledby="filters-title">
+        <h2 class="catalog-filters__title" id="filters-title">Фильтры</h2>
 
-        <form class="catalog-filters__form" action="#" method="get">
+        <form class="catalog-filters__form" id="catalog-filters-form" action="#" method="get">
           <fieldset class="catalog-filters__group">
             <legend class="catalog-filters__legend">Категория</legend>
-            <label class="catalog-filters__label">
-              <input class="catalog-filters__input" type="checkbox" name="category" value="all"> Все товары
-            </label>
             <label class="catalog-filters__label">
               <input class="catalog-filters__input" type="checkbox" name="category" value="popular"> Популярные
             </label>
             <label class="catalog-filters__label">
               <input class="catalog-filters__input" type="checkbox" name="category" value="new"> Новинки
             </label>
+            <label class="catalog-filters__label">
+              <input class="catalog-filters__input" type="checkbox" name="category" value="discount"> Со скидкой
+            </label>
           </fieldset>
 
           <fieldset class="catalog-filters__group">
-            <legend class="catalog-filters__legend">Цена</legend>
+            <legend class="catalog-filters__legend">Цена, руб.</legend>
             <label class="catalog-filters__label" for="price-from">От</label>
             <input class="catalog-filters__input" id="price-from" name="price-from"
               type="number" min="0" placeholder="0">
@@ -86,36 +84,163 @@
               type="number" min="0" placeholder="5000">
           </fieldset>
 
-          <button class="button button--primary" type="submit">Применить</button>
+          <fieldset class="catalog-filters__group">
+            <legend class="catalog-filters__legend">Наличие</legend>
+            <label class="catalog-filters__label">
+              <input class="catalog-filters__input" type="checkbox" name="in-stock" value="yes"> Только в наличии
+            </label>
+          </fieldset>
+
+          <div class="catalog-filters__actions">
+            <button class="button button--primary" type="submit">Применить</button>
+            <button class="button button--secondary" type="reset" id="reset-filters">Сбросить</button>
+          </div>
         </form>
       </aside>
 
       <section class="catalog-products">
         <h2 class="section__title">Список товаров</h2>
 
-        <div class="products-grid">
-          <article class="product-card product-card--discount">
+        <div class="catalog-toolbar">
+          <p class="catalog-toolbar__count" id="catalog-count" aria-live="polite"></p>
+          <div class="catalog-toolbar__sort">
+            <label for="catalog-sort">Сортировка:</label>
+            <select class="catalog-toolbar__select" id="catalog-sort" name="sort">
+              <option value="default">По умолчанию</option>
+              <option value="price-asc">Сначала дешевле</option>
+              <option value="price-desc">Сначала дороже</option>
+              <option value="rating-desc">По рейтингу</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="products-grid" id="catalog-grid">
+
+          <article class="product-card product-card--discount" data-category="discount" data-price="1000" data-rating="4.8" data-stock="in">
             <span class="product-card__badge">Скидка</span>
             <h3 class="product-card__title">Товар 1</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 1000 руб.</p>
+            <p class="product-card__rating"><span role="img" aria-label="Оценка 5 из 5">★★★★★</span> 4.8 · 24 отзыва</p>
+            <p class="product-card__description">Базовая модель для повседневных задач.</p>
+            <ul class="product-card__features">
+              <li>Гарантия 6 месяцев</li>
+              <li>Доставка за 2 дня</li>
+            </ul>
+            <p class="product-card__stock product-card__stock--in">В наличии</p>
+            <p class="product-card__price">1000 руб.<s class="product-card__old-price">1200 руб.</s></p>
             <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
           </article>
 
-          <article class="product-card">
+          <article class="product-card" data-category="popular" data-price="1500" data-rating="4.6" data-stock="in">
             <h3 class="product-card__title">Товар 2</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 1500 руб.</p>
+            <p class="product-card__rating"><span role="img" aria-label="Оценка 5 из 5">★★★★★</span> 4.6 · 31 отзыв</p>
+            <p class="product-card__description">Самый выбираемый товар в своей категории.</p>
+            <ul class="product-card__features">
+              <li>Гарантия 12 месяцев</li>
+              <li>Стандартная комплектация</li>
+            </ul>
+            <p class="product-card__stock product-card__stock--in">В наличии</p>
+            <p class="product-card__price">1500 руб.</p>
             <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
           </article>
 
-          <article class="product-card">
+          <article class="product-card product-card--new" data-category="new" data-price="2000" data-rating="4.2" data-stock="order">
+            <span class="product-card__badge product-card__badge--new">Новинка</span>
             <h3 class="product-card__title">Товар 3</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 2000 руб.</p>
+            <p class="product-card__rating"><span role="img" aria-label="Оценка 4 из 5">★★★★☆</span> 4.2 · 9 отзывов</p>
+            <p class="product-card__description">Премиум-вариант с усиленными материалами.</p>
+            <ul class="product-card__features">
+              <li>Гарантия 24 месяца</li>
+              <li>Премиум-материалы</li>
+            </ul>
+            <p class="product-card__stock product-card__stock--order">Под заказ</p>
+            <p class="product-card__price">2000 руб.</p>
+            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          </article>
+
+          <article class="product-card" data-category="popular" data-price="800" data-rating="4.4" data-stock="in">
+            <h3 class="product-card__title">Товар 4</h3>
+            <p class="product-card__rating"><span role="img" aria-label="Оценка 4 из 5">★★★★☆</span> 4.4 · 17 отзывов</p>
+            <p class="product-card__description">Компактный вариант для небольших пространств.</p>
+            <ul class="product-card__features">
+              <li>Гарантия 6 месяцев</li>
+              <li>Компактный размер</li>
+            </ul>
+            <p class="product-card__stock product-card__stock--in">В наличии</p>
+            <p class="product-card__price">800 руб.</p>
+            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          </article>
+
+          <article class="product-card product-card--new" data-category="new" data-price="1200" data-rating="4.7" data-stock="in">
+            <span class="product-card__badge product-card__badge--new">Новинка</span>
+            <h3 class="product-card__title">Товар 5</h3>
+            <p class="product-card__rating"><span role="img" aria-label="Оценка 5 из 5">★★★★★</span> 4.7 · 12 отзывов</p>
+            <p class="product-card__description">Обновлённая версия с расширенной комплектацией.</p>
+            <ul class="product-card__features">
+              <li>Гарантия 12 месяцев</li>
+              <li>Расширенная комплектация</li>
+            </ul>
+            <p class="product-card__stock product-card__stock--in">В наличии</p>
+            <p class="product-card__price">1200 руб.</p>
+            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          </article>
+
+          <article class="product-card" data-category="popular new" data-price="3500" data-rating="4.9" data-stock="in">
+            <h3 class="product-card__title">Товар 6</h3>
+            <p class="product-card__rating"><span role="img" aria-label="Оценка 5 из 5">★★★★★</span> 4.9 · 48 отзывов</p>
+            <p class="product-card__description">Лидер продаж последнего месяца.</p>
+            <ul class="product-card__features">
+              <li>Гарантия 24 месяца</li>
+              <li>Лидер продаж</li>
+            </ul>
+            <p class="product-card__stock product-card__stock--in">В наличии</p>
+            <p class="product-card__price">3500 руб.</p>
+            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          </article>
+
+          <article class="product-card product-card--discount" data-category="discount" data-price="650" data-rating="3.9" data-stock="in">
+            <span class="product-card__badge">Скидка</span>
+            <h3 class="product-card__title">Товар 7</h3>
+            <p class="product-card__rating"><span role="img" aria-label="Оценка 4 из 5">★★★★☆</span> 3.9 · 6 отзывов</p>
+            <p class="product-card__description">Ограниченная партия по сниженной цене.</p>
+            <ul class="product-card__features">
+              <li>Гарантия 6 месяцев</li>
+              <li>Ограниченная партия</li>
+            </ul>
+            <p class="product-card__stock product-card__stock--in">В наличии</p>
+            <p class="product-card__price">650 руб.<s class="product-card__old-price">900 руб.</s></p>
+            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          </article>
+
+          <article class="product-card product-card--new" data-category="new" data-price="2500" data-rating="4.3" data-stock="order">
+            <span class="product-card__badge product-card__badge--new">Новинка</span>
+            <h3 class="product-card__title">Товар 8</h3>
+            <p class="product-card__rating"><span role="img" aria-label="Оценка 4 из 5">★★★★☆</span> 4.3 · 11 отзывов</p>
+            <p class="product-card__description">Изготавливается под индивидуальный заказ.</p>
+            <ul class="product-card__features">
+              <li>Гарантия 12 месяцев</li>
+              <li>Индивидуальные параметры</li>
+            </ul>
+            <p class="product-card__stock product-card__stock--order">Под заказ</p>
+            <p class="product-card__price">2500 руб.</p>
+            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          </article>
+
+          <article class="product-card product-card--discount" data-category="popular discount" data-price="4200" data-rating="4.5" data-stock="in">
+            <span class="product-card__badge">Скидка</span>
+            <h3 class="product-card__title">Товар 9</h3>
+            <p class="product-card__rating"><span role="img" aria-label="Оценка 5 из 5">★★★★★</span> 4.5 · 22 отзыва</p>
+            <p class="product-card__description">Комплект из двух предметов со скидкой.</p>
+            <ul class="product-card__features">
+              <li>Гарантия 24 месяца</li>
+              <li>Комплект из двух предметов</li>
+            </ul>
+            <p class="product-card__stock product-card__stock--in">В наличии</p>
+            <p class="product-card__price">4200 руб.<s class="product-card__old-price">4800 руб.</s></p>
             <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
           </article>
         </div>
+
+        <p class="catalog-empty" id="catalog-empty" hidden>По заданным условиям товаров нет. Попробуйте изменить фильтры.</p>
       </section>
     </section>
 
@@ -166,7 +291,9 @@
     <p>&copy; 2026 Учебный проект. Все права защищены.</p>
     <p>Дисциплина: Фронтенд и бэкенд разработка</p>
   </footer>
-  
+
   <a class="to-top" href="#top">Наверх</a>
+
+  <script src="js/catalog.js" defer></script>
 </body>
 </html>

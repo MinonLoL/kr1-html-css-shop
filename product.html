@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Карточка товара учебного интернет-магазина: описание, характеристики и цена.">
+  <meta name="description" content="Карточка товара учебного интернет-магазина: описание, характеристики, доставка и отзывы.">
   <title>Товар 1 — Учебный интернет-магазин</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -51,14 +51,66 @@
     </nav>
 
     <section class="product section">
-      <img class="product__image" src="images/product-1.jpg" alt="Товар 1">
+      <img class="product__image" src="images/product-1.jpg" alt="Товар 1: общий вид">
 
       <div class="product__info">
+        <p class="product__category">Категория: базовый товар · Артикул: KR1-0001</p>
         <h1 class="product__title">Товар 1</h1>
-        <p class="product__description">Подробное описание учебного товара.</p>
-        <p class="product__price">Цена: 1000 руб.</p>
-        <a class="button button--primary" href="order.html">Оставить заявку</a>
+
+        <p class="product__rating">
+          <span role="img" aria-label="Оценка 5 из 5">★★★★★</span>
+          4.8 · <a href="#reviews">24 отзыва</a>
+        </p>
+
+        <p class="product__price">
+          1000 руб.
+          <s class="product__old-price">1200 руб.</s>
+          <span class="product__save">Экономия 200 руб.</span>
+        </p>
+
+        <p class="product__stock product__stock--in">В наличии: 14 шт.</p>
+
+        <p class="product__description">
+          Подробное описание учебного товара. Подходит для повседневного использования
+          и демонстрирует возможности карточки товара: характеристики, варианты комплектации,
+          условия доставки и отзывы покупателей.
+        </p>
+
+        <fieldset class="product__options">
+          <legend>Комплектация</legend>
+          <label class="product__option">
+            <input type="radio" name="bundle" value="standard" checked> Стандартная (входит в цену)
+          </label>
+          <label class="product__option">
+            <input type="radio" name="bundle" value="extended"> Расширенная (+300 руб.)
+          </label>
+        </fieldset>
+
+        <div class="product__buy">
+          <label for="quantity">Количество</label>
+          <input class="product__quantity" id="quantity" name="quantity" type="number" min="1" max="14" value="1">
+          <a class="button button--primary" href="order.html">Оставить заявку</a>
+        </div>
+
+        <ul class="product__perks">
+          <li>Доставка за 2 дня</li>
+          <li>Гарантия 6 месяцев</li>
+          <li>Возврат в течение 14 дней</li>
+        </ul>
       </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section__title">Описание</h2>
+      <p>
+        Товар создан как учебный пример карточки интернет-магазина. В описании можно указать
+        назначение, преимущества и особенности использования. Все значения носят демонстрационный характер.
+      </p>
+      <ul>
+        <li>Проверенные материалы и аккуратная сборка;</li>
+        <li>Подходит для повседневного использования;</li>
+        <li>Доступна расширенная комплектация (+300 руб. к цене).</li>
+      </ul>
     </section>
 
     <section class="section">
@@ -66,29 +118,62 @@
         <caption>Характеристики товара</caption>
         <thead>
           <tr>
-            <th class="product-table__cell product-table__cell--head">Параметр</th>
-            <th class="product-table__cell product-table__cell--head">Значение</th>
+            <th class="product-table__cell product-table__cell--head" scope="col">Параметр</th>
+            <th class="product-table__cell product-table__cell--head" scope="col">Значение</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="product-table__cell">Категория</td>
+            <th class="product-table__cell" scope="row">Категория</th>
             <td class="product-table__cell">Учебный товар</td>
           </tr>
           <tr>
-            <td class="product-table__cell">Цена</td>
+            <th class="product-table__cell" scope="row">Цена</th>
             <td class="product-table__cell">1000 руб.</td>
           </tr>
           <tr>
-            <td class="product-table__cell">Наличие</td>
-            <td class="product-table__cell">В наличии</td>
+            <th class="product-table__cell" scope="row">Наличие</th>
+            <td class="product-table__cell">В наличии, 14 шт.</td>
+          </tr>
+          <tr>
+            <th class="product-table__cell" scope="row">Гарантия</th>
+            <td class="product-table__cell">6 месяцев</td>
+          </tr>
+          <tr>
+            <th class="product-table__cell" scope="row">Размеры</th>
+            <td class="product-table__cell">20 × 15 × 10 см</td>
+          </tr>
+          <tr>
+            <th class="product-table__cell" scope="row">Вес</th>
+            <td class="product-table__cell">0,5 кг</td>
+          </tr>
+          <tr>
+            <th class="product-table__cell" scope="row">Материал</th>
+            <td class="product-table__cell">Пластик и текстиль</td>
+          </tr>
+          <tr>
+            <th class="product-table__cell" scope="row">Страна производства</th>
+            <td class="product-table__cell">Россия</td>
           </tr>
         </tbody>
       </table>
     </section>
 
-    <section class="section reviews">
+    <section class="section">
+      <h2 class="section__title">Доставка и возврат</h2>
+      <dl class="product-info-list">
+        <dt>Доставка</dt>
+        <dd>По Москве и регионам за 2–5 рабочих дней. Курьер — от 300 руб.</dd>
+        <dt>Самовывоз</dt>
+        <dd>Бесплатно из пункта выдачи в день заказа.</dd>
+        <dt>Возврат</dt>
+        <dd>В течение 14 дней при сохранении товарного вида и упаковки.</dd>
+      </dl>
+    </section>
+
+    <section class="section reviews" id="reviews">
       <h2 class="section__title">Отзывы покупателей</h2>
+      <p class="reviews__summary">Средняя оценка: 4.8 из 5. Показаны последние отзывы.</p>
 
       <div class="reviews__list">
         <article class="review-card">
@@ -112,8 +197,6 @@
     </section>
 
   </main>
-
-
 
   <footer class="site-footer">
     <p>&copy; 2026 Учебный проект. Все права защищены.</p>
