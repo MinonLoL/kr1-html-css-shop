@@ -32,7 +32,6 @@
   /* Размеры */
   --container-width: 1100px;
 
-
   /* Оформление */
   --font-heading: Georgia, "Times New Roman", serif;
   --shadow-card: 0 2px 8px rgba(43, 33, 24, 0.08);
@@ -44,7 +43,9 @@
    2. Базовые стили
    =============================== */
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -96,8 +97,11 @@ a:focus-visible {
    4. Компоненты страницы
    =============================== */
 
-/* Шапка */
+/* Шапка (закреплена по Шагу 3) */
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   padding: var(--space-lg);
   background-color: var(--color-surface);
 }
@@ -588,4 +592,9 @@ a:focus-visible {
 .product-table__cell--accent {
   background-color: var(--color-surface-accent);
   font-weight: 700;
+}
+
+/* Якоря (#popular, #faq) не прячутся под закреплённой шапкой */
+html {
+  scroll-padding-top: 120px;
 }
